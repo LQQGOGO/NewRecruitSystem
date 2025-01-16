@@ -8,6 +8,7 @@
 
 <style scoped>
 .w {
+  padding-top: 10rem;
   height: 98vh;
   width: 100%;
   background-image: url('./assets/loginbg.jpg');
