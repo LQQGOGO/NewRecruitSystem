@@ -1,15 +1,15 @@
 import request from '@/utils/request'
 
-export const codeLogin = async (QQNumber, SchoolNumber, Name, Major, PhoneNumber) => {
+export const regist = async (QQNumber, SchoolNumber, Name, Major, PhoneNumber) => {
   try {
     const response = await request.post(
       '/api/login',
       {
-        QQNumber,
-        SchoolNumber,
-        Name,
-        Major,
-        PhoneNumber
+        qq: QQNumber,
+        school: SchoolNumber,
+        name: Name,
+        major: Major,
+        phone: PhoneNumber
       },
       {
         headers: {

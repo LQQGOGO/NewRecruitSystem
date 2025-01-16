@@ -3,9 +3,10 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { User, Lock } from '@element-plus/icons-vue'
+import { useStudentStore } from '@/stores/student'
 import { useUserStore } from '@/stores/user'
-import { codeLogin } from '@/api/login'
 const router = useRouter()
+const studentStore = useStudentStore()
 const userStore = useUserStore()
 const formModel = ref({
   QQNumber: '',
@@ -46,29 +47,17 @@ const login = async () => {
       ElMessage.error('验证失败，请检查输入')
       return
     }
-
-    // 执行登录请求，并捕获请求中的任何异常
-    const response = await codeLogin(
-      formModel.value.QQNumber,
-      formModel.value.SchoolNumber,
-      formModel.value.Name,
-      formModel.value.Major,
-      formModel.value.PhoneNumber
-    )
-    // 检查响应状态是否为 200
-    if (response.status === 200) {
-      const token = response.data.token
-      // 将 token 和 userId 存储在 localStorage 中
-      //console.log(token);
-
-      userStore.setToken(token)
-      // 显示成功消息并导航到首页
-      ElMessage.success(response.message || '登录成功')
+    //将信息存入仓库
+    studentStore.setName(formModel.value.Name)
+    studentStore.setSchool(formModel.value.SchoolNumber)
+    studentStore.setMajor(formModel.value.Major)
+    studentStore.setPhone(formModel.value.PhoneNumber)
+    studentStore.setQQ(formModel.value.QQNumber)
+    //存个假的token
+    userStore.setToken('12138')
+    // 显示成功消息并导航到首页
+      ElMessage.success('登录成功')
       router.push('/')
-    } else {
-      // 若 status 不为 200，则显示错误消息
-      ElMessage.error(response.message || '登录失败')
-    }
   } catch (error) {
     // 捕获任何未捕获的错误，并显示错误信息
     ElMessage.error(`请求失败：${error.message || '请稍后重试'}`)
