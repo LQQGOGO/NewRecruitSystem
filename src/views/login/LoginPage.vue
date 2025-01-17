@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStudentStore } from '@/stores/student'
 import { useUserStore } from '@/stores/user'
+import { ElMessage } from 'element-plus'
 
 const studentStore = useStudentStore()
 const userStore = useUserStore()
@@ -50,7 +51,7 @@ const rules = {
   }
 }
 
-const validateField = (field) => {
+const validateField = field => {
   const value = formModel.value[field]
   const rule = rules[field]
 
@@ -74,7 +75,10 @@ const login = () => {
     }
   }
   if (valid) {
-    alert('登录成功')
+    ElMessage({
+    message: '登录成功！',
+    type: 'success',
+  })
     studentStore.setName(formModel.value.Name)
     studentStore.setMajor(formModel.value.Major)
     studentStore.setSchool(formModel.value.SchoolNumber)
@@ -114,7 +118,9 @@ const login = () => {
             @blur="validateField('SchoolNumber')"
           />
           <label for="school">学号</label>
-          <span class="error" v-if="errors.SchoolNumber">{{ errors.SchoolNumber }}</span>
+          <span class="error" v-if="errors.SchoolNumber">{{
+            errors.SchoolNumber
+          }}</span>
         </div>
         <div class="inputGroup">
           <input
@@ -125,7 +131,9 @@ const login = () => {
             @blur="validateField('QQNumber')"
           />
           <label for="qq">QQ</label>
-          <span class="error" v-if="errors.QQNumber">{{ errors.QQNumber }}</span>
+          <span class="error" v-if="errors.QQNumber">{{
+            errors.QQNumber
+          }}</span>
         </div>
         <div class="inputGroup">
           <input
@@ -147,9 +155,21 @@ const login = () => {
             @blur="validateField('PhoneNumber')"
           />
           <label for="phone">手机号</label>
-          <span class="error" v-if="errors.PhoneNumber">{{ errors.PhoneNumber }}</span>
+          <span class="error" v-if="errors.PhoneNumber">{{
+            errors.PhoneNumber
+          }}</span>
         </div>
-        <button type="submit" class="button">登录</button>
+        <button type="submit" class="button">
+          登 录
+          <div id="clip">
+            <div id="leftTop" class="corner"></div>
+            <div id="rightBottom" class="corner"></div>
+            <div id="rightTop" class="corner"></div>
+            <div id="leftBottom" class="corner"></div>
+          </div>
+          <span id="rightArrow" class="arrow"></span>
+          <span id="leftArrow" class="arrow"></span>
+        </button>
       </form>
     </div>
   </div>
@@ -169,10 +189,9 @@ const login = () => {
   justify-content: center;
   backdrop-filter: blur(3px);
   width: 30em;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(213, 212, 212, 0.9);
   transform: translateX(-10%);
-  .button {
-    width: 100%;
-  }
 }
 h1 {
   text-align: center;
@@ -189,7 +208,7 @@ h1 {
   font-size: 100%;
   padding: 0.8em;
   outline: none;
-  border: 2px solid rgb(200, 200, 200);
+  border: 2px solid #81acf7;
   background-color: transparent;
   border-radius: 20px;
   width: 100%;
@@ -204,12 +223,12 @@ h1 {
   margin-left: 0.5em;
   pointer-events: none;
   transition: all 0.3s ease;
-  color: rgb(100, 100, 100);
+  color: rgb(108, 115, 122);
 }
 
 .inputGroup input:focus ~ label,
 .inputGroup input:valid ~ label {
-  transform: translateY(-50%) scale(.9);
+  transform: translateY(-50%) scale(0.9);
   margin: 0em;
   margin-left: 1.3em;
   padding: 0.4em;
@@ -217,7 +236,7 @@ h1 {
 }
 
 .inputGroup input:focus {
-  border-color: rgb(150, 150, 200);
+  border-color: #27c39f;
 }
 
 .error {
@@ -225,5 +244,173 @@ h1 {
   font-size: 0.9em;
   margin-top: 0.5em;
   margin-left: 1em;
+}
+
+/* button 按钮样式 */
+button {
+  position: relative;
+  width: 15em;
+  height: 4em;
+  outline: none;
+  transition: 0.1s;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #252c2f;
+  display: flex; /* 使用 flexbox 布局 */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
+
+#clip {
+  --color: #7fa6e8;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border: 5px double var(--color);
+  box-shadow: inset 0px 0px 15px #47a0e4;
+  -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.arrow {
+  position: absolute;
+  transition: 0.2s;
+  background-color: #81acf7;
+  top: 44%;
+  width: 11%;
+  height: 30%;
+}
+
+#leftArrow {
+  left: -17%;
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+#rightArrow {
+  -webkit-clip-path: polygon(100% 49%, 0 0, 0 100%);
+  left: 106%;
+}
+
+button:hover #rightArrow {
+  background-color: #27c39f;
+  left: -17%;
+  animation: 0.6s ease-in-out both infinite alternate rightArrow8;
+}
+
+button:hover #leftArrow {
+  background-color: #27c39f;
+  left: 106%;
+  animation: 0.6s ease-in-out both infinite alternate leftArrow8;
+}
+
+.corner {
+  position: absolute;
+  width: 4em;
+  height: 4em;
+  background-color: #5b88d6;
+  box-shadow: inset 1px 1px 8px #5c9cca;
+  transform: scale(1) rotate(45deg);
+  transition: 0.2s;
+}
+
+#rightTop {
+  top: -1.98em;
+  left: 91%;
+}
+
+#leftTop {
+  top: -1.96em;
+  left: -3.0em;
+}
+
+#leftBottom {
+  top: 2.10em;
+  left: -2.15em;
+}
+
+#rightBottom {
+  top: 45%;
+  left: 88%;
+}
+
+button:hover #leftTop {
+  animation: 0.1s ease-in-out 0.05s both changeColor8,
+  0.2s linear 0.4s both lightEffect8;
+}
+
+button:hover #rightTop {
+  animation: 0.1s ease-in-out 0.15s both changeColor8,
+  0.2s linear 0.4s both lightEffect8;
+}
+
+button:hover #rightBottom {
+  animation: 0.1s ease-in-out 0.25s both changeColor8,
+  0.2s linear 0.4s both lightEffect8;
+}
+
+button:hover #leftBottom {
+  animation: 0.1s ease-in-out 0.35s both changeColor8,
+  0.2s linear 0.4s both lightEffect8;
+}
+
+button:hover .corner {
+  transform: scale(1.25) rotate(45deg);
+}
+
+button:hover #clip {
+  animation: 0.2s ease-in-out 0.55s both greenLight8;
+  --color: #27c39f;
+}
+
+@keyframes changeColor8 {
+  from {
+    background-color: #4685af;
+  }
+
+  to {
+    background-color: #27c39f;
+  }
+}
+
+@keyframes lightEffect8 {
+  from {
+    box-shadow: 1px 1px 5px #27c39f;
+  }
+
+  to {
+    box-shadow: 0 0 2px #27c39f;
+  }
+}
+
+@keyframes greenLight8 {
+  from {
+  }
+
+  to {
+    box-shadow: inset 0px 0px 15px #27c39f;
+  }
+}
+
+@keyframes leftArrow8 {
+  from {
+    transform: translate(0px);
+  }
+
+  to {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes rightArrow8 {
+  from {
+    transform: translate(0px);
+  }
+
+  to {
+    transform: translateX(-10px);
+  }
 }
 </style>
