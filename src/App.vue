@@ -10,9 +10,32 @@
 .w {
   height: 98vh;
   width: 100%;
-  background-image: url('./assets/loginbg.jpg');
-  background-size: cover; /* 确保背景图片覆盖整个元素 */
-  background-position: center; /* 将背景图片居中 */
-  background-repeat: no-repeat;
+  --color: #e1e1e1;
+  background-color: #f3f3f3;
+  background-image: linear-gradient(
+      0deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    );
+  background-size: 55px 55px;
 }
 </style>
