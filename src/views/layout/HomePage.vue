@@ -424,7 +424,7 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
 /* 卡车装饰样式 */
 .loader {
   position: fixed;
-  top: 89vh;
+  bottom: 0;
   left: 0;
   width: fit-content;
   height: fit-content;
@@ -434,8 +434,8 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
 }
 
 .truckWrapper {
-  width: 550px;
-  height: 100px;
+  width: 28.6vw;
+  height: 11vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -445,10 +445,10 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
 }
 /* truck upper body */
 .truckBody {
-  width: 180px;
-  height: fit-content;
-  margin-bottom: 6px;
-  animation: motion 1s linear infinite;
+  width: 33%;
+  height: auto;
+  margin-bottom: 1.4%;
+  animation: motion 1.5s linear infinite;
 }
 /* truck suspension animation*/
 @keyframes motion {
@@ -456,7 +456,7 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(3px);
+    transform: translateY(0.3em);
   }
   100% {
     transform: translateY(0px);
@@ -466,35 +466,36 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
 /* truck's name */
 .truckName {
   position: absolute;
-  top: 35px;
-  left: 230px;
+  bottom: 45%;
+  padding-right: 10%;
   font-weight: bold;
-  animation: motion 1s linear infinite;
+  font-size: 1vw;
+  animation: motion 1.5s linear infinite;
 }
 
 /* truck's tires */
 .truckTires {
-  width: 130px;
+  width: 24.6%;
   height: fit-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 10px 0px 15px;
+  padding: 0px 0.7% 0px 1%;
   position: absolute;
   bottom: 0;
 }
 .truckTires svg {
-  width: 24px;
+  width: 20%;
 }
 
 .road {
   width: 100%;
-  height: 1.5px;
+  height: 3%;
   background-color: #282828;
   position: relative;
   bottom: 0;
   align-self: flex-end;
-  border-radius: 3px;
+  border-radius: 0.15em;
 }
 .road::before {
   content: '';
@@ -504,7 +505,7 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
   background-color: #282828;
   right: -50%;
   border-radius: 3px;
-  animation: roadAnimation 1.4s linear infinite;
+  animation: roadAnimation 5.4s linear infinite;
   border-left: 10px solid white;
 }
 .road::after {
@@ -515,7 +516,7 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
   background-color: #282828;
   right: -65%;
   border-radius: 3px;
-  animation: roadAnimation 1.4s linear infinite;
+  animation: roadAnimation 5.4s linear infinite;
   border-left: 4px solid white;
 }
 
@@ -523,16 +524,16 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
   position: absolute;
   bottom: 0;
   right: 30%;
-  height: 90px;
-  animation: roadAnimation 3.4s linear infinite;
+  height: 100%;
+  animation: roadAnimation 5.4s linear infinite;
 }
 
 @keyframes roadAnimation {
   0% {
-    transform: translateX(300px);
+    transform: translateX(12vw);
   }
   100% {
-    transform: translateX(-350px);
+    transform: translateX(-50vw);
   }
 }
 </style>
