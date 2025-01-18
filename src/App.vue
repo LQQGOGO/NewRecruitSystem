@@ -1,14 +1,19 @@
 <script setup></script>
 
 <template>
+  <div class="bg"></div>
   <div class="w">
     <RouterView />
   </div>
 </template>
 
 <style scoped>
-.w {
-  height: 98vh;
+.bg {
+  position: fixed; /* 将元素固定在视口内 */
+  top: 0; /* 距离视口顶部的距离为 0 */
+  left: 0; /* 距离视口左侧的距离为 0 */
+  z-index: -1;
+  height: 100vh;
   width: 100%;
   --color: #e1e1e1;
   background-color: #f3f3f3;
@@ -37,5 +42,8 @@
       transparent
     );
   background-size: 55px 55px;
+}
+.w {
+  width: 100%;
 }
 </style>

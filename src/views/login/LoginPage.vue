@@ -189,6 +189,7 @@ const login = () => {
   justify-content: center;
   backdrop-filter: blur(3px);
   width: 30em;
+  height: 40em;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(213, 212, 212, 0.9);
   transform: translateX(-10%);
