@@ -1,13 +1,18 @@
 <script setup>
 import TrcukComponent from '@/components/TrcukComponent.vue'
-import MouseComponent from '@/components/MouseComponent.vue'
 import DirectionsButton from '@/components/DirectionsButton.vue'
 import TextComponent from '@/components/TextComponent.vue'
+import ArrowComponent from '@/components/ArrowComponent.vue';
 </script>
 
 <template>
   <div class="container">
-    <h1>点击下方按钮报名加入我们</h1>
+
+    <!-- 箭头部分 -->
+    <ArrowComponent>
+      <h1>点击下方按钮了解方向详情</h1>
+    </ArrowComponent>
+
     <!-- 导航按钮部分 -->
     <DirectionsButton></DirectionsButton>
 
@@ -27,9 +32,6 @@ import TextComponent from '@/components/TextComponent.vue'
 
     <!-- 卡车部分 -->
     <TrcukComponent class="truck"></TrcukComponent>
-
-    <!-- 仓鼠部分 -->
-     <MouseComponent class="mouse"></MouseComponent>
   </div>
 </template>
 
@@ -52,12 +54,5 @@ import TextComponent from '@/components/TextComponent.vue'
   position: fixed;
   bottom: 0;
   left: 0;
-}
-
-/* 老鼠样式 */
-.mouse {
-  position: fixed;
-  bottom: 0;
-  right: 8vw;
 }
 </style>

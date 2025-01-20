@@ -1,6 +1,9 @@
 <script setup>
+import MouseComponent from '@/components/MouseComponent.vue';
 </script>
 
 <template>
-  <div>Ios</div>
+  <div>
+    <MouseComponent></MouseComponent>
+  </div>
 </template>

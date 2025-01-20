@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
 <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
 	<div class="wheel"></div>
 	<div class="hamster">
@@ -17,16 +18,38 @@
 	</div>
 	<div class="spoke"></div>
 </div>
+</div>
 </template>
 
 <style scoped>
+.container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  animation: moveAndFlip 35s linear infinite;
+}
+
+@keyframes moveAndFlip {
+  0% {
+    transform: translateX(5vw) scaleX(1); /* 初始位置在右边，正常方向 */
+  }
+  50% {
+    transform: translateX(-100vw) scaleX(1); /* 移动到左边，未翻转 */
+  }
+  51% {
+    transform: translateX(-100vw) scaleX(-1); /* 保持在左边，进行镜像翻转 */
+  }
+  100% {
+    transform: translateX(5vw) scaleX(-1); /* 返回到右边，保持翻转 */
+  }
+}
 /* From Uiverse.io by Nawsome */
 .wheel-and-hamster {
   --dur: 1s;
   position: relative;
-  width: 12vw;
-  height: 12vw;
-  font-size: 1vw;
+  width: 4vw;
+  height: 4vw;
+  font-size: 0.33vw;
 }
 
 .wheel,
