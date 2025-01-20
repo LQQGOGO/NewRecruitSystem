@@ -1,5 +1,6 @@
+<script>
+</script>
+
 <template>
-  <div>
-    ios
-    </div>
+  <div>ios</div>
 </template>
