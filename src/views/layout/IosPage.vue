@@ -1,6 +1,7 @@
-<script>
+<script setup>
+import GoldButton from '@/components/GoldButton.vue'
 </script>
 
 <template>
-  <div>ios</div>
+  <GoldButton></GoldButton>
 </template>
