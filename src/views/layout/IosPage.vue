@@ -2,6 +2,7 @@
 import MouseComponent from '@/components/MouseComponent.vue'
 import TextComponent from '@/components/TextComponent.vue'
 import ArrowComponent from '@/components/ArrowComponent.vue'
+import RegistButton from '@/components/RegistButton.vue';
 </script>
 
 <template>
@@ -33,6 +34,9 @@ import ArrowComponent from '@/components/ArrowComponent.vue'
     <!-- 屏幕底部仓鼠部分 -->
     <MouseComponent></MouseComponent>
 
+    <!-- 报名按钮部分 -->
+    <RegistButton></RegistButton>
+
     <!-- 装饰栏部分 -->
     <div>
       <!-- 左边装饰部分 -->
@@ -41,6 +45,7 @@ import ArrowComponent from '@/components/ArrowComponent.vue'
       <!-- 右边装饰部分 -->
       <div class="right"></div>
     </div>
+
   </div>
 </template>
 
@@ -58,7 +63,7 @@ import ArrowComponent from '@/components/ArrowComponent.vue'
   height: 50rem;
   width: 25rem;
   background-color: #fff;
-  transform: translate3d(-40rem, -25rem, 0);
+  transform: translate3d(-30rem, -35rem, 0);
 }
 
 .right {
@@ -66,6 +71,6 @@ import ArrowComponent from '@/components/ArrowComponent.vue'
   height: 50rem;
   width: 25rem;
   background-color: #d42525;
-  transform: translate3d(40rem, -25rem, 0);
+  transform: translate3d(30rem, -35rem, 0);
 }
 </style>

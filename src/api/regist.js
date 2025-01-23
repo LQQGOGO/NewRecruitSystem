@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export const regist = async (QQNumber, SchoolNumber, Name, Major, PhoneNumber, direction) => {
+export const regist = async (QQNumber, SchoolNumber, Name, Major, PhoneNumber, Direction) => {
   try {
     const response = await request.post(
       '/api/regist',
@@ -10,7 +10,7 @@ export const regist = async (QQNumber, SchoolNumber, Name, Major, PhoneNumber, d
         name: Name,
         major: Major,
         phone: PhoneNumber,
-        id: direction
+        direction: Direction
       },
       {
         headers: {
