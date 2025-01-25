@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="m-container">
 <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
 	<div class="wheel"></div>
 	<div class="hamster">
@@ -22,11 +22,12 @@
 </template>
 
 <style scoped>
-.container {
+.m-container {
   position: fixed;
   bottom: 0;
   right: 0;
   animation: moveAndFlip 35s linear infinite;
+  z-index: 2;
 }
 
 @keyframes moveAndFlip {

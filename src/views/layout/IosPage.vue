@@ -2,7 +2,8 @@
 import MouseComponent from '@/components/MouseComponent.vue'
 import TextComponent from '@/components/TextComponent.vue'
 import ArrowComponent from '@/components/ArrowComponent.vue'
-import RegistButton from '@/components/RegistButton.vue';
+import RegistButton from '@/components/RegistButton.vue'
+import TagLine from '@/components/TagLine.vue';
 </script>
 
 <template>
@@ -28,7 +29,7 @@ import RegistButton from '@/components/RegistButton.vue';
 
     <!-- 箭头部分 -->
     <ArrowComponent>
-      <h1>点击下方按钮即可报名</h1>
+      <h1>点击下方按钮即可报名Ios组</h1>
     </ArrowComponent>
 
     <!-- 屏幕底部仓鼠部分 -->
@@ -37,20 +38,19 @@ import RegistButton from '@/components/RegistButton.vue';
     <!-- 报名按钮部分 -->
     <RegistButton></RegistButton>
 
-    <!-- 装饰栏部分 -->
-    <div>
-      <!-- 左边装饰部分 -->
-      <div class="left"></div>
-
-      <!-- 右边装饰部分 -->
-      <div class="right"></div>
+    <!-- 左边装饰部分 -->
+    <div class="left">
+      <TagLine></TagLine>
     </div>
 
+    <!-- 右边装饰部分 -->
+    <div class="right"></div>
   </div>
 </template>
 
 <style scoped>
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,18 +59,20 @@ import RegistButton from '@/components/RegistButton.vue';
 }
 
 .left {
-  float: left;
+  position: absolute;
   height: 50rem;
   width: 25rem;
   background-color: #fff;
-  transform: translate3d(-30rem, -35rem, 0);
+  top: 5rem;
+  left: -30rem;
 }
 
 .right {
-  float: right;
+  position: absolute;
   height: 50rem;
   width: 25rem;
   background-color: #d42525;
-  transform: translate3d(30rem, -35rem, 0);
+  top: 5rem;
+  left: 55rem;
 }
 </style>
