@@ -3,6 +3,7 @@ import MouseComponent from '@/components/MouseComponent.vue'
 import TextComponent from '@/components/TextComponent.vue'
 import ArrowComponent from '@/components/ArrowComponent.vue'
 import RegistButton from '@/components/RegistButton.vue'
+import TagLine from '@/components/TagLine.vue'
 </script>
 
 <template>
@@ -38,10 +39,14 @@ import RegistButton from '@/components/RegistButton.vue'
     <RegistButton></RegistButton>
 
     <!-- 左边装饰部分 -->
-    <div class="left"></div>
+    <div class="left">
+      <TagLine content="这是一段测试文字"></TagLine>
+    </div>
 
     <!-- 右边装饰部分 -->
-    <div class="right"></div>
+    <div class="right">
+      <TagLine content="被用作宣传语"></TagLine>
+    </div>
   </div>
 </template>
 
@@ -59,7 +64,6 @@ import RegistButton from '@/components/RegistButton.vue'
   position: absolute;
   height: 50rem;
   width: 25rem;
-  background-color: #fff;
   top: 5rem;
   left: -30rem;
 }
@@ -68,7 +72,6 @@ import RegistButton from '@/components/RegistButton.vue'
   position: absolute;
   height: 50rem;
   width: 25rem;
-  background-color: #d42525;
   top: 5rem;
   left: 55rem;
 }
