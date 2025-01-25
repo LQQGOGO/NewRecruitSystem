@@ -12,7 +12,6 @@ const studentStore = useStudentStore()
 
 <template>
   <div class="container">
-
     <!-- 名字部分 -->
     <BookComponent class="name">
       <template #name>{{ studentStore.name }}</template>
@@ -21,14 +20,6 @@ const studentStore = useStudentStore()
       <template #phone>{{ studentStore.phone }}</template>
       <template #qq>{{ studentStore.qq }}</template>
     </BookComponent>
-
-    <!-- 箭头部分 -->
-    <ArrowComponent>
-      <h1>点击下方按钮了解方向详情</h1>
-    </ArrowComponent>
-
-    <!-- 导航按钮部分 -->
-    <DirectionsButton></DirectionsButton>
 
     <!-- 实验室介绍部分 -->
     <div class="introduction">
@@ -43,9 +34,9 @@ const studentStore = useStudentStore()
             Phone）和Web小组。实验室以自主学习与共同交流并行的自发式学习方式为主，培养成员的学习兴趣及自主学习能力，努力为每位成员创造最佳的学习环境和学习氛围，为打造一批移动应用开发能手而不断努力！
           </p>
           <p>
-            实验室位于西安邮电大学长安校区东区教学楼一层FZ155教室，西邮IT应用型人才实训中心，是“Google
+            实验室位于西安邮电大学长安校区东区教学楼一层FZ155教室，西邮IT应用型人才实训中心，是"Google
             大学合作部--Android
-            人才培养示范基地”。实验室内部设有众多移动应用开发设备，包括若干台iMac一体机、Mac
+            人才培养示范基地"。实验室内部设有众多移动应用开发设备，包括若干台iMac一体机、Mac
             Mini以及PC，除此之外，各小组还配备有相关的测试设备，包括iPhone、iPad、iPod
             Touch、HTC Android智能手机以及Windows Phone
             智能手机可供成员测试相关应用程序。Android开发组还配有由公司提供的Android底层开发箱，可用于开发和测试Android底层程序。
@@ -57,6 +48,14 @@ const studentStore = useStudentStore()
         </template>
       </TextComponent>
     </div>
+
+    <!-- 箭头部分 -->
+    <ArrowComponent>
+      <h1>点击下方按钮了解方向详情</h1>
+    </ArrowComponent>
+
+    <!-- 导航按钮部分 -->
+    <DirectionsButton></DirectionsButton>
 
     <!-- 实验室宣传语部分 -->
     <div class="right">
@@ -74,34 +73,93 @@ const studentStore = useStudentStore()
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50rem;
+  width: 90vw;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
 /* 实验室介绍部分 */
 .introduction {
   width: 100%;
+  padding: 1rem;
 }
 
 /* 卡车样式 */
 .truck {
   position: fixed;
-  bottom: 0;
-  left: 0;
+  bottom: -2vh;
+  left: 0vw;
+  width: auto;
+  height: 15vh;
 }
 
 /* 名字标签样式 */
 .name {
   position: absolute;
-  top: 5rem;
-  left: -25rem;
+  top: 5vh;
+  left: -25vw;
 }
 
 .right {
   position: absolute;
-  height: 50rem;
-  width: 25rem;
-  top: 5rem;
-  left: 55rem;
+  height: 80vh;
+  width: 20vw;
+  top: 5vh;
+  left: calc(100% + 5vw);
+}
+
+@media screen and (max-width: 1200px) {
+  .name,
+  .right,
+  .truck {
+    display: none;
+  }
+
+  .container {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .introduction {
+    font-size: 0.9em;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    font-size: 0.9rem;
+  }
+
+  .introduction {
+    font-size: 0.85em;
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1em;
+  }
+
+  .truck {
+    transform: scale(0.7);
+    bottom: 1vh;
+    left: 1vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 98%;
+    font-size: 0.8rem;
+  }
+
+  .introduction {
+    font-size: 0.8em;
+    padding: 0.3rem;
+  }
 }
 </style>

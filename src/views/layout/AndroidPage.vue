@@ -3,7 +3,7 @@ import MouseComponent from '@/components/MouseComponent.vue'
 import TextComponent from '@/components/TextComponent.vue'
 import ArrowComponent from '@/components/ArrowComponent.vue'
 import RegistButton from '@/components/RegistButton.vue'
-import TagLine from '@/components/TagLine.vue';
+import TagLine from '@/components/TagLine.vue'
 </script>
 
 <template>
@@ -69,5 +69,17 @@ import TagLine from '@/components/TagLine.vue';
   width: 25rem;
   top: 5rem;
   left: 55rem;
+}
+
+/* 添加媒体查询 */
+@media screen and (max-width: 1200px) {
+  .left,
+  .right {
+    display: none; /* 隐藏左右两侧内容 */
+  }
+
+  .container {
+    width: 90%; /* 让容器宽度自适应 */
+  }
 }
 </style>

@@ -201,14 +201,39 @@ watch(
 </template>
 
 <style scoped>
-/* 导航栏样式按钮 */
+/* 修改导航栏布局样式 */
 .channel {
-  margin: 5rem auto 5rem;
-  width: 100%;
+  margin: 5rem auto;
+  width: 90%;
+  max-width: 800px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem 2rem; /* 保持左右间距2rem */
+  row-gap: 4rem; /* 增加上下间距到4rem */
+  justify-content: center;
 }
 
+#poda {
+  flex: 0 0 calc(50% - 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+}
+
+/* 添加媒体查询适配小屏幕 */
+@media (max-width: 768px) {
+  .channel {
+    width: 95%;
+    gap: 3rem; /* 在小屏幕上统一设置间距 */
+  }
+
+  #poda {
+    flex: 0 0 100%;
+  }
+}
+
+/* 导航栏样式按钮 */
 .button {
   --width: 100px;
   --height: 35px;

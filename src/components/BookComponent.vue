@@ -27,27 +27,20 @@ const handleWrong = () => {
 <style scoped>
 .book {
   position: relative;
-  border-radius: 10px;
-  width: 220px;
-  height: 300px;
+  border-radius: 0.625rem;
+  width: 15vw;
+  max-width: 220px;
+  height: auto;
+  aspect-ratio: 11/15;
   background-color: rgb(239, 238, 231);
-  -webkit-box-shadow: 1px 1px 15px #b9b4b4;
-  box-shadow: 1px 1px 15px #b9b4b4;
-  -webkit-transform: preserve-3d;
-  -ms-transform: preserve-3d;
+  box-shadow: 0.1em 0.1em 1em #b9b4b4;
   transform: preserve-3d;
-  -webkit-perspective: 2000px;
   perspective: 2000px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   color: #000;
+  padding: 1rem;
 }
 
 .cover {
@@ -85,34 +78,55 @@ const handleWrong = () => {
 }
 
 p {
-  font-size: 15px;
+  font-size: 1em;
   font-weight: 400;
-  padding-bottom: 10px;
-  border-bottom: 2px solid rgb(78, 116, 68);
+  padding-bottom: 0.625em;
+  border-bottom: 0.125em solid rgb(78, 116, 68);
 }
+
 p span {
   color: rgb(95, 95, 95);
-  font-size: 12px;
+  font-size: 0.8em;
 }
+
 .title {
   position: absolute;
-  top: 50px;
-  left: 50px;
-  font-size: 20px;
+  top: 15%;
+  left: 15%;
+  font-size: 1.25em;
   font-weight: 600;
 }
+
 .wrong {
   position: absolute;
-  bottom: 0;
-  right: 5px;
-  font-size: 20px;
+  bottom: 0.3em;
+  right: 0.3em;
+  font-size: 1.25em;
   font-weight: 600;
   border: 1px solid rgb(2, 1, 1);
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 1.5em;
+  height: 1.5em;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .book {
+    width: 20vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .book {
+    width: 25vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .book {
+    width: 30vw;
+  }
 }
 </style>

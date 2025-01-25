@@ -51,23 +51,74 @@ import TagLine from '@/components/TagLine.vue'
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50rem;
+  width: 90vw;
+  max-width: 50rem;
   margin: 0 auto;
+  padding: 1rem;
 }
 
 .left {
   position: absolute;
-  height: 50rem;
-  width: 25rem;
-  top: 5rem;
-  left: -30rem;
+  height: 80vh;
+  width: 20vw;
+  top: 5vh;
+  left: -25vw;
 }
 
 .right {
   position: absolute;
-  height: 50rem;
-  width: 25rem;
-  top: 5rem;
-  left: 55rem;
+  height: 80vh;
+  width: 20vw;
+  top: 5vh;
+  left: calc(100% + 5vw);
+}
+
+@media screen and (max-width: 1200px) {
+  .left,
+  .right {
+    display: none;
+  }
+
+  .container {
+    width: 90%;
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .introduction {
+    font-size: 0.9em;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .introduction {
+    font-size: 0.85em;
+  }
+
+  h1 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 98%;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+
+  .introduction {
+    font-size: 0.8em;
+  }
 }
 </style>

@@ -75,4 +75,16 @@ import TagLine from '@/components/TagLine.vue'
   top: 5rem;
   left: 55rem;
 }
+
+/* 添加媒体查询 */
+@media screen and (max-width: 1200px) {
+  .left,
+  .right {
+    display: none; /* 隐藏左右两侧内容 */
+  }
+
+  .container {
+    width: 90%; /* 让容器宽度自适应 */
+  }
+}
 </style>
