@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { useStudentStore } from '@/stores/student'
 import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
+import { check } from '@/api/check'
 
 const studentStore = useStudentStore()
 const userStore = useUserStore()
@@ -67,13 +68,21 @@ const validateField = field => {
   return true
 }
 
-const login = () => {
+const login = async () => {
   let valid = true
   for (let field in formModel.value) {
     if (!validateField(field)) {
       valid = false
     }
   }
+  //检查学号是否存在, 存在就跳转确认页
+  const response = await check( formModel.value.SchoolNumber)
+  if(response.data.status) {
+    userStore.setToken('12138')
+    router.push('/check')
+    return
+  }
+
   if (valid) {
     ElMessage({
     message: '登录成功！',
