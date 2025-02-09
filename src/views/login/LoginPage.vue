@@ -76,8 +76,14 @@ const login = async () => {
     }
   }
   //检查学号是否存在, 存在就跳转确认页
-  const response = await check( formModel.value.SchoolNumber)
-  if(response.data.status) {
+  const response = await check(formModel.value.SchoolNumber)
+  if (response.data.status) {
+    studentStore.setName(response.data.data.name)
+    studentStore.setMajor(response.data.data.major)
+    studentStore.setSchool(response.data.data.school)
+    studentStore.setQQ(response.data.data.qq)
+    studentStore.setPhone(response.data.data.phone)
+    studentStore.setDirection(response.data.data.direction)
     userStore.setToken('12138')
     router.push('/check')
     return
@@ -85,9 +91,9 @@ const login = async () => {
 
   if (valid) {
     ElMessage({
-    message: '登录成功！',
-    type: 'success',
-  })
+      message: '登录成功！',
+      type: 'success'
+    })
     studentStore.setName(formModel.value.Name)
     studentStore.setMajor(formModel.value.Major)
     studentStore.setSchool(formModel.value.SchoolNumber)
@@ -282,7 +288,16 @@ button {
   height: 100%;
   border: 5px double var(--color);
   box-shadow: inset 0px 0px 15px #47a0e4;
-  -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  -webkit-clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
 }
 
 .arrow {
@@ -333,11 +348,11 @@ button:hover #leftArrow {
 
 #leftTop {
   top: -1.96em;
-  left: -3.0em;
+  left: -3em;
 }
 
 #leftBottom {
-  top: 2.10em;
+  top: 2.1em;
   left: -2.15em;
 }
 
@@ -347,23 +362,27 @@ button:hover #leftArrow {
 }
 
 button:hover #leftTop {
-  animation: 0.1s ease-in-out 0.05s both changeColor8,
-  0.2s linear 0.4s both lightEffect8;
+  animation:
+    0.1s ease-in-out 0.05s both changeColor8,
+    0.2s linear 0.4s both lightEffect8;
 }
 
 button:hover #rightTop {
-  animation: 0.1s ease-in-out 0.15s both changeColor8,
-  0.2s linear 0.4s both lightEffect8;
+  animation:
+    0.1s ease-in-out 0.15s both changeColor8,
+    0.2s linear 0.4s both lightEffect8;
 }
 
 button:hover #rightBottom {
-  animation: 0.1s ease-in-out 0.25s both changeColor8,
-  0.2s linear 0.4s both lightEffect8;
+  animation:
+    0.1s ease-in-out 0.25s both changeColor8,
+    0.2s linear 0.4s both lightEffect8;
 }
 
 button:hover #leftBottom {
-  animation: 0.1s ease-in-out 0.35s both changeColor8,
-  0.2s linear 0.4s both lightEffect8;
+  animation:
+    0.1s ease-in-out 0.35s both changeColor8,
+    0.2s linear 0.4s both lightEffect8;
 }
 
 button:hover .corner {

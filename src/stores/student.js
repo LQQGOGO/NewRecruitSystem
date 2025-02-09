@@ -25,5 +25,11 @@ export const useStudentStore = defineStore('student', () => {
     qq.value = t
   }
 
-  return { name, setName, school, setSchool, major, setMajor, phone, setPhone, qq, setQQ }
+  const direction = ref('')
+  const setDirection = t => {
+    direction.value = t
+  }
+
+  return { name, setName, school, setSchool, major, setMajor, phone, setPhone, qq, setQQ, direction, setDirection }
+
 })
