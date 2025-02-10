@@ -1,9 +1,72 @@
 <script setup>
 import { ref } from 'vue'
 import { useStudentStore } from '@/stores/student'
+import { change } from '@/api/change'
 const studentStore = useStudentStore()
 
 const input = ref(false)
+
+// 创建响应式变量存储新信息
+const newInfo = ref({
+  name: '',
+  major: '',
+  school: '',
+  phone: '',
+  qq: '',
+  direction: ''
+})
+
+// 监听input的变化，当打开编辑模式时，将当前方向赋值给newInfo
+const handleEdit = () => {
+  if (!input.value) {
+    input.value = true
+    newInfo.value.direction = studentStore.direction
+  } else {
+    changeInfo()
+  }
+}
+
+// 提交信息的方法
+const changeInfo = async () => {
+  try {
+    // 调用 change API
+    await change({
+      name: newInfo.value.name || studentStore.name,
+      major: newInfo.value.major || studentStore.major,
+      school: newInfo.value.school || studentStore.school,
+      phone: newInfo.value.phone || studentStore.phone,
+      qq: newInfo.value.qq || studentStore.qq,
+      direction: newInfo.value.direction || studentStore.direction
+    })
+
+    // 更新 store 中的信息
+    studentStore.$patch({
+      name: newInfo.value.name || studentStore.name,
+      major: newInfo.value.major || studentStore.major,
+      school: newInfo.value.school || studentStore.school,
+      phone: newInfo.value.phone || studentStore.phone,
+      qq: newInfo.value.qq || studentStore.qq,
+      direction: newInfo.value.direction || studentStore.direction
+    })
+
+    // 关闭输入状态
+    input.value = false
+
+    // 清空输入
+    newInfo.value = {
+      name: '',
+      major: '',
+      school: '',
+      phone: '',
+      qq: '',
+      direction: ''
+    }
+
+    alert('修改成功！')
+  } catch (error) {
+    alert('修改失败：' + error.message)
+  }
+}
 </script>
 
 <template>
@@ -15,6 +78,7 @@ const input = ref(false)
         <span v-if="!input">{{ studentStore.name }}</span>
         <input
           v-else
+          v-model="newInfo.name"
           type="text"
           :placeholder="studentStore.name"
           name="text"
@@ -26,6 +90,7 @@ const input = ref(false)
         <span v-if="!input">{{ studentStore.major }}</span>
         <input
           v-else
+          v-model="newInfo.major"
           type="text"
           :placeholder="studentStore.major"
           name="text"
@@ -37,6 +102,7 @@ const input = ref(false)
         <span v-if="!input">{{ studentStore.school }}</span>
         <input
           v-else
+          v-model="newInfo.school"
           type="text"
           :placeholder="studentStore.school"
           name="text"
@@ -48,6 +114,7 @@ const input = ref(false)
         <span v-if="!input">{{ studentStore.phone }}</span>
         <input
           v-else
+          v-model="newInfo.phone"
           type="text"
           :placeholder="studentStore.phone"
           name="text"
@@ -59,6 +126,7 @@ const input = ref(false)
         <span v-if="!input">{{ studentStore.qq }}</span>
         <input
           v-else
+          v-model="newInfo.qq"
           type="text"
           :placeholder="studentStore.qq"
           name="text"
@@ -68,21 +136,35 @@ const input = ref(false)
       <div class="check-infomation-item" :class="{ 'input-wrapper': input }">
         <span>方向：</span>
         <span v-if="!input">{{ studentStore.direction }}</span>
-        <input
-          v-else
-          type="text"
-          :placeholder="studentStore.direction"
-          name="text"
-          class="input"
-        />
+        <select v-else v-model="newInfo.direction" class="input">
+          <option value="ios" :selected="studentStore.direction === 'ios'">
+            iOS
+          </option>
+          <option value="web" :selected="studentStore.direction === 'web'">
+            Web
+          </option>
+          <option
+            value="server"
+            :selected="studentStore.direction === 'server'"
+          >
+            Server
+          </option>
+          <option
+            value="android"
+            :selected="studentStore.direction === 'android'"
+          >
+            Android
+          </option>
+        </select>
       </div>
     </div>
 
     <!-- 修改按钮 -->
-    <button @click="input = !input">{{ input === false ? '修改信息' : '提交信息'}}</button>
+    <button @click="handleEdit">
+      {{ input === false ? '修改信息' : '提交信息' }}
+    </button>
   </div>
 </template>
-
 
 <style scoped>
 .check-page-content {
@@ -123,6 +205,22 @@ const input = ref(false)
 }
 
 .input-wrapper input:focus {
+  outline-color: lightcoral;
+}
+
+.input-wrapper select {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 13em;
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+}
+
+.input-wrapper select:focus {
   outline-color: lightcoral;
 }
 
